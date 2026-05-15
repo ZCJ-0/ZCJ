@@ -1,0 +1,466 @@
+</div>
+</body>
+</html>`html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>古茗·新式茶饮 | 鲜活不止一杯</title>
+    <!-- 使用优雅字体 & 简洁重置 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FEF8F0;   /* 温润米白基底，模仿奶茶色调 */
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #2C241A;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F6E7D9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D6A27D;
+            border-radius: 10px;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        /* 头部hero区-古茗调性 */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            background: linear-gradient(135deg, #FFF6ED 0%, #FFEAD8 100%);
+            border-radius: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 35px -12px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "🍃🍊🍑";
+            font-size: 140px;
+            opacity: 0.08;
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(120deg, #B45A2E, #E1916C, #D47B48);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #8B5A3C;
+            font-weight: 500;
+            background: #FFFFFFCC;
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+        }
+        .hero p {
+            margin-top: 1.2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #5C3E28;
+            font-weight: 500;
+        }
+
+        /* 模块通用样式 */
+        .module {
+            background: white;
+            border-radius: 2rem;
+            margin-bottom: 2.5rem;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #FFE4D0;
+        }
+        .module:hover {
+            box-shadow: 0 24px 48px -12px rgba(140, 80, 30, 0.12);
+            border-color: #FFD7BD;
+        }
+        .module-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.01em;
+            border-left: 6px solid #E88C5D;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: #3E2A1C;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .module-title i {
+            font-size: 1.7rem;
+        }
+/* 网格布局卡片 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .grid-4col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.2rem;
+        }
+        .info-card {
+            background: #FEFAF6;
+            padding: 1.3rem 1.2rem;
+            border-radius: 1.5rem;
+            border: 1px solid #FFECDF;
+            transition: all 0.2s;
+        }
+        .info-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #AA6F4B;
+        }
+        .info-card p, .info-card li {
+            font-size: 0.95rem;
+            color: #4A3928;
+            line-height: 1.5;
+        }
+        .info-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .badge {
+            background: #EEDBCB;
+            color: #9B5E39;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 100px;
+            padding: 0.2rem 0.7rem;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+/* 数据高亮 */
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #C66D3A;
+            line-height: 1.2;
+            margin-right: 6px;
+        }
+        .flex-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .stat-item {
+            background: #FFF3EA;
+            border-radius: 1rem;
+            padding: 0.5rem 1rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #FFDDC4, #FEE2CF, #FFDDC4);
+        }
+
+        /* 对特殊列表 */
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .tag {
+            background: white;
+            border-radius: 60px;
+            padding: 4px 14px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #EBC8AE;
+            color: #A55C31;
+        }
+
+        /* 存在问题模块特别高亮 */
+        .warn-card {
+            background: #FFF6F0;
+            border-left: 4px solid #E2976B;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #B88A66;
+            border-top: 1px solid #FFE1CD;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 880px) {
+            .container {
+                padding: 1rem;
+            }
+            .grid-2col, .grid-3col, .grid-4col {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .module-title {
+                font-size: 1.6rem;
+            }
+        }
+        @media (min-width: 881px) and (max-width: 1100px) {
+            .grid-3col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-4col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .img-deco {
+            font-size: 1.7rem;
+            vertical-align: middle;
+        }
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #E88C5D;
+            padding-left: 1rem;
+            margin: 1rem 0 0.5rem;
+            color: #6E4A2C;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 首屏hero 古茗气质 -->
+    <div class="hero">
+        <h1>GOODME · 古茗</h1>
+        <div class="sub">鲜活灵感 · 日日上新</div>
+        <p>从浙南小镇走出的茶饮巨头，用“冷链”重塑下沉市场，给每一杯注入新鲜生命力。</p>
+    </div>
+ <!-- 模块一：企业背景 -->
+    <div class="module">
+        <div class="module-title">
+            <span>🏭</span> 企业背景 · 踏实而鲜活
+        </div>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>📖 品牌简介</h3>
+                <p>古茗（Goodme）成立于2010年，总部位于浙江温岭市大溪镇，隶属于古茗科技集团有限公司。主营果茶、奶茶、咖啡等新式茶饮，坚持“新鲜美味、价格亲民”，用一杯高质量的饮品连接广阔消费者。</p>
+                <div class="quote">“让每一杯都值得等待”</div>
+<img src="C:\Users\86152\Desktop\新建文件夹\9GOODME.webp" alt="古茗品牌Logo" style="width: 440px; height: 200;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222540_42_138.jpg" style="width: 220px; height:180 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222541_43_138.png"style="width: 220px; height:180 ;">
+            </div>
+            <div class="info-card">
+                <h3>⚡ 核心特点</h3>
+                <ul>
+                    <li><strong>深耕下沉市场</strong>：“农村包围城市”策略，门店高度集中于二线及以下城市。</li>
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222544_45_138.jpg"style="width: 220px; height:130 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222543_44_138.jpg"style="width: 220px; height:130 ;">
+                    <li><strong>强大冷链供应链</strong>：极少数向低线城市高频配送短保鲜果/鲜奶的品牌。</li>
+                    <li><strong>“地域加密”布局</strong>：围绕仓库密集开店，仓到店配送成本仅占GMV约1%。</li>
+                    <li><strong>高频上新</strong>：2025年全年推出106款新品，保持产品新鲜感。</li>
+                </ul>
+<div class="tag-list">
+   <class="tag">🍠芋泥麻薯炖奶
+                  <class="tag">🍑桃胶木薯炖奶
+
+                 <class="tag">🧃苹果汁
+
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222548_48_138.jpg"style="width: 250px; height:110 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222549_49_138.png"style="width: 250px; height:110 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222547_47_138.jpg"style="width: 250px; height:110 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222550_50_138.jpg"style="width: 250px; height:110 ;">
+
+                </div>
+            </div>
+        </div>
+        <div class="flex-stats">
+            <div class="stat-item"><span class="stat-number">13,554家</span><br>全国门店 (2025年底)</div>
+            <div class="stat-item"><span class="stat-number">新茶饮规模第二</span><br>仅次于蜜雪冰城</div>
+            <div class="stat-item"><span class="stat-number">490亿</span><br>胡润中国500强估值</div>
+            <div class="stat-item"><span class="stat-number">2.06亿</span><br>注册会员 · 季活5200万</div>
+        </div>
+        <div class="info-card" style="margin-top: 12px; background:#FDF5ED;">
+            <p>📈 <strong>上市里程碑</strong>：2025年2月12日港交所挂牌上市，股票代码01364.HK，开启品牌全球化资本新篇章。</p>
+        </div>
+    </div>
+
+<!-- 模块二：商业模式分析 -->
+    <div class="module">
+        <div class="module-title">
+            <span>⚙️</span> 商业模式 · 加盟驱动 × 供应链护城河
+        </div>
+        <div class="grid-2col" style="margin-bottom: 1rem;">
+            <div class="info-card">
+                <h3>🏪 加盟模式主导</h3>
+                <p>2025年加盟店收入占总收入96.5%</p>
+                <ul>
+                    <li><strong>销售商品及设备</strong>：占总收入79.5% —— 原材料、设备供应链销售</li>
+                    <li><strong>加盟管理服务</strong>：占总收入20.3% —— 加盟费、培训服务费</li>
+                </ul>
+                <div class="badge">轻资产快速扩张</div>
+            </div>
+            <div class="info-card">
+                <h3>🚚 供应链驱动的商业帝国</h3>
+                <ul>
+                    <li>📍 <strong>24个仓库</strong> + 冷库库容超7万立方米</li>
+                    <li>📦 <strong>98%门店享受“两日一配”</strong> 冷链服务</li>
+                    <li>📉 仓到店配送成本仅占GMV <strong>＜1%</strong> (行业平均2%-3%)</li>
+                    <li>🌿 自有西双版纳柠檬种植基地，源头把控原材料品质</li>
+                </ul>
+            </div>
+        </div>
+        <div class="info-card" style="margin-top: 0;">
+            <h3>🗺️ “地域加密”布局策略</h3>
+            <p>围绕仓库<strong>150公里范围内密集开店</strong>（75%门店在此范围）· 单个省份突破<strong>500家以上门店</strong>才形成关键规模。目前已有9个省份门店破500/1000家，构筑区域绝对优势。</p>
+            <div class="tag-list">
+                <span class="tag">🏆 浙江大本营</span>
+                <span class="tag">🏆 江苏超千家</span>
+                <span class="tag">🏆 福建/安徽等密集</span>
+            </div>
+        </div>
+    </div>
+ <!-- 模块三：市场营销策略分析 产品/价格/渠道/品牌营销 -->
+    <div class="module">
+        <div class="module-title">
+            <span>📢</span> 市场营销策略 · 鲜活定位 × 全域渗透
+        </div>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3>🍎 产品策略</h3>
+                <ul>
+                    <li><strong>“鲜活”定位</strong>：新鲜水果茶，用茶叶取代香精茶</li>
+                    <li><strong>高频上新</strong>：2025年共推出106款新品，刺激复购</li>
+                    <li><strong>咖啡品类拓展</strong>：2025年推出27款咖啡饮品，超1.2万家门店配备咖啡机</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>💰 价格策略</h3>
+                <ul>
+                    <li><strong>质价比定位</strong>：亲民价格+高品质，供应链降本让利消费者</li>
+                    <li><strong>外卖定价差异化</strong>：外卖平台定价高于小程序，保障加盟商利润空间</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>📱 渠道策略</h3>
+                <ul>
+                    <li>🏬 <strong>线下门店升级</strong>：六代店扩大堂食区，消费体验提升</li>
+                    <li>🛵 <strong>外卖占比约50%</strong>，处于健康平衡水平</li>
+                    <li>💎 <strong>会员私域</strong>：2.06亿注册会员支撑高粘性复购</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3>✨ 品牌营销</h3>
+                <ul>
+                    <li>⭐ <strong>明星代言</strong>：2025年6月官宣吴彦祖成为咖啡品质合伙人，引爆话题</li>
+                    <li>🤝 <strong>跨界联名</strong>：曾与哈根达斯等知名品牌推出联名产品，制造惊喜感</li>
+                    <li>🎨 社交媒体深耕“古茗糖水”等爆款营销</li>
+                </ul>
+            </div>
+        </div>
+        <!-- 补充上新亮点 -->
+        <div style="background: #FCF1E7; border-radius: 1.2rem; margin-top: 1rem; padding: 0.8rem 1.2rem;">
+            <p style="font-weight: 600; display: flex; align-items: center; gap: 6px;">🍯 2025爆款案例 · 慢炖糖水系列 <span style="font-size:0.8rem;">(桃胶木薯炖奶/芋泥麻薯炖奶)</span></p>
+            <p style="font-size:0.9rem;">上线即售罄，木薯/桃胶小料断货，社交平台话题量超700万——将“糖水铺”搬入奶茶店，养生与口感双赢。</p>
+        </div>
+    </div>
+<!-- 模块四：存在问题 区域不均衡/咖啡差异化/外卖利润挤压 -->
+    <div class="module">
+        <div class="module-title">
+            <span>⚠️</span> 存在问题 · 挑战与破局
+        </div>
+        <div class="grid-3col">
+            <div class="warn-card">
+                <h3>🗺️ 区域发展不均衡</h3>
+                <p><strong>仍有17个省份未建立布局</strong>，全国化程度有限。</p>
+                <ul>
+                    <li>北京、上海、江苏（南京尚为空白）</li>
+                    <li>东三省、西北地区（新疆/青海/甘肃/宁夏）</li>
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222552_52_138.png"style="width: 250px; height:150 ;">
+                    <li>门店高度集中于浙江、江苏、福建等深耕省份</li>
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222551_51_138.jpg"style="width: 250px; height:150 ;">
+                </ul>
+                <div class="badge">供应链半径限制扩张速度</div>
+            </div>
+            <div class="warn-card">
+                <h3>☕ 咖啡品类差异化尚需验证</h3>
+                <p>目前咖啡以美式、拿铁等基础款为主，同质化较明显。在瑞幸、库迪等巨头挤压下，古茗咖啡仍需打造爆款记忆点，建立心智差异。</p>
+                <div class="tag-list"><span class="tag">⚠️ 27款咖啡SKU但缺乏明星单品</span></div>
+            </div>
+            <div class="warn-card">
+                <h3>📲 外卖占比带来的加盟商利润挤压</h3>
+                <ul>
+                    <li>外卖订单需支付平台佣金、配送费，降低门店实收</li>
+                    <li>外卖占比高峰期达60%，部分加盟商利润承压</li>
+                    <li>外卖平台起送价提升至20-30元，可能导致订单流失</li>
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222554_54_138.jpg"style="width: 170px; height:220 ;">
+<img src="C:\Users\86152\Desktop\新建文件夹\微信图片_20260515222553_53_138.jpg"style="width: 170px; height:220;">
+
+                </ul>
+                <div class="quote" style="margin-top: 5px;">古茗正通过小程序会员运营、提升客单价组合拳应对挑战。</div>
+
+            </div>
+        </div>
+        <!-- 额外提醒空白省份一览 -->
+        <div style="margin-top: 1rem; background: #FFF5EB; border-radius: 1rem; padding: 0.8rem 1rem; font-size: 0.85rem;">
+            <span style="font-weight:700;">📌 待开拓版图：</span> 北京市、上海市、天津市、黑龙江、吉林、辽宁、内蒙古、新疆、青海、甘肃、宁夏、山西、陕西(部分低覆盖率)等。古茗坚持“关键规模”策略，未来聚焦供应链突破。
+        </div>
+    </div>
+
+    <!-- 附加图文氛围：古茗特色印象卡片（体现符合特征） -->
+    <div class="module" style="background: linear-gradient(110deg, #FFFFFF, #FFFBF5);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <div>
+                <div class="module-title" style="border-left-color: #C57748; margin-bottom: 0.5rem;">
+                    <span>🧃</span> 一杯古茗 · 鲜活在地
+                </div>
+                <p style="max-width: 600px;">从大溪镇出发，依靠“两日一配”冷链，将新鲜水果与真茶递送到13000+乡镇县城，成为无数年轻人的日常快乐水。2025年秋冬的一碗慢炖桃胶木薯，温暖了无数人。</p>
+ 
